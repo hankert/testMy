@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/matcha-core/matcha-core.iml" filepath="$PROJECT_DIR$/matcha-core/matcha-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/matcha-core/matcha-core.iml" filepath="$PROJECT_DIR$/matcha-core/matcha-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testMy.iml" filepath="$PROJECT_DIR$/testMy.iml" />
       <module fileurl="file://$PROJECT_DIR$/testMy.iml" filepath="$PROJECT_DIR$/testMy.iml" />
     </modules>
   </component>

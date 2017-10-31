@@ -16,7 +16,7 @@ public class MyApp extends Application{
     public void onCreate() {
         super.onCreate();
         Matcha.init(this)
-                .withApiHost("http://baidu.com")
+                .withApiHost("http://207.sinobyte.cn/v10/")
                 .withLoaderDelayed(1000)
                 .configure();
     }

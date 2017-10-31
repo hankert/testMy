@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 
 import com.hanker.core.base.ProxyActivity;
 import com.hanker.core.base.delegate.LatteDelegate;
+import com.hanker.test.ui.MainDelegate;
 import com.hanker.test.ui.launcher.ILauncherListener;
 import com.hanker.test.ui.launcher.LauncherDelegate;
 import com.hanker.test.ui.launcher.OnLauncherFinishTag;
@@ -15,7 +16,8 @@ public class MainActivity extends ProxyActivity implements ILauncherListener{
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new LauncherDelegate();
+//        return new LauncherDelegate();
+        return new MainDelegate();
     }
 
     @Override

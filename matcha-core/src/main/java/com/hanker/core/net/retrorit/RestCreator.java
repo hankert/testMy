@@ -2,11 +2,17 @@ package com.hanker.core.net.retrorit;
 
 import com.hanker.core.net.app.ConfigKeys;
 import com.hanker.core.net.app.Matcha;
+import com.hanker.core.utils.MatChaLogger;
+import com.hanker.core.utils.UtilForRequest;
 
+import java.io.IOException;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -48,6 +54,23 @@ public final class RestCreator {
 //        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()
         private static final OkHttpClient OK_HTTP_CLIENT = BUILDER
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+
+                        String t = UtilForRequest.genSn();
+                        Request request = chain.request().newBuilder()
+                                .addHeader(ApiConfig.FIELD_APPID,"102")
+                                .addHeader(ApiConfig.FIELD_CHANNEL,"360")
+                                .addHeader(ApiConfig.FIELD_TERVER,"3.1")
+                                .addHeader(ApiConfig.FIELD_DEVICEID,UtilForRequest.getDeviceId())
+                                .addHeader("ExpiresTime",t)
+                                .addHeader("tcp",UtilForRequest.getHS(t, (String) getParams().get(ApiConfig.FIELD_SIGN)))
+                                .build();
+                        MatChaLogger.d("header", request.toString());
+                        return chain.proceed(request);
+                    }
+                })
                 .build();
     }
 
